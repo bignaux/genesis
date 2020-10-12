@@ -17,6 +17,7 @@
   assaultcube = pkgs.callPackage ./pkgs/assaultcube {};
   caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   freediag = pkgs.callPackage ./pkgs/freediag {}; #58594
+  gbdk-n = pkgs.callPackage ./pkgs/gbdk-n {}; #61709
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {}; #79182
   navit = pkgs.libsForQt5.callPackage  ./pkgs/navit {};
   pfsshell = pkgs.callPackage ./pkgs/pfsshell {}; #79142
