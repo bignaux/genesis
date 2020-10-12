@@ -14,8 +14,21 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
-  # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
-  # ...
-}
+  caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
+  freediag = pkgs.callPackage ./pkgs/freediag {}; #58594
+  hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {}; #79182
+  navit = pkgs.libsForQt5.callPackage  ./pkgs/navit {};
+  pfsshell = pkgs.callPackage ./pkgs/pfsshell {}; #79142
 
+  pysolfc = pkgs.callPackage ./pkgs/pysolfc
+    {
+      myPython3Packages = python3Packages;
+    }; #82183
+
+  python3Packages = pkgs.recurseIntoAttrs (
+    pkgs.python3Packages.callPackage ./pkgs/development/python-modules {}
+  );
+
+  quickbms = pkgs.callPackage ./pkgs/quickbms {}; #81023
+  rasm = pkgs.callPackage ./pkgs/rasm {};
+}
