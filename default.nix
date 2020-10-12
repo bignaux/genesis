@@ -14,6 +14,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  assaultcube = pkgs.callPackage ./pkgs/assaultcube {};
   caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   freediag = pkgs.callPackage ./pkgs/freediag {}; #58594
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {}; #79182
@@ -31,4 +32,7 @@
 
   #quickbms = pkgs.callPackage ./pkgs/quickbms {}; #81023
   rasm = pkgs.callPackage ./pkgs/rasm {};
+
+  # qt.qpa.plugin issue, test later.
+  #scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator {}; #36747
 }
