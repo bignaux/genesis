@@ -20,15 +20,15 @@
   navit = pkgs.libsForQt5.callPackage  ./pkgs/navit {};
   pfsshell = pkgs.callPackage ./pkgs/pfsshell {}; #79142
 
-  pysolfc = pkgs.callPackage ./pkgs/pysolfc
-    {
-      myPython3Packages = python3Packages;
-    }; #82183
+  #pysolfc = pkgs.callPackage ./pkgs/pysolfc
+  #  {
+      # myPython3Packages = python3Packages;
+  #  }; #82183
 
   python3Packages = pkgs.recurseIntoAttrs (
     pkgs.python3Packages.callPackage ./pkgs/development/python-modules {}
   );
 
-  quickbms = pkgs.callPackage ./pkgs/quickbms {}; #81023
+  #quickbms = pkgs.callPackage ./pkgs/quickbms {}; #81023
   rasm = pkgs.callPackage ./pkgs/rasm {};
 }

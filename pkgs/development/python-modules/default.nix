@@ -3,6 +3,5 @@
 rec {
 
   pycotap = callPackage ./pycotap {};
-
-  pysol_cards = callPackage ./pkgs/pysol_cards {};
+  pysol_cards = callPackage ./pysol_cards {};
 }
