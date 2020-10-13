@@ -17,6 +17,7 @@
   assaultcube = pkgs.callPackage ./pkgs/assaultcube {};
   #beremiz = pkgs.callPackage ./pkgs/beremiz {};
   caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
+  clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
   freediag = pkgs.callPackage ./pkgs/freediag {};
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n {};
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {};
