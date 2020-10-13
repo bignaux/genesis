@@ -22,6 +22,7 @@
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {};
   magick2cpc = pkgs.callPackage ./pkgs/magick2cpc {};
   matiec = pkgs.callPackage ./pkgs/matiec {};
+  microwindows = pkgs.callPackage ./pkgs/microwindows {};
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso {};
   mymcplus = pkgs.python3Packages.callPackage ./pkgs/mymcplus {};
   navit = pkgs.libsForQt5.callPackage ./pkgs/navit {};
