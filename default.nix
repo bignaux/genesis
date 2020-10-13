@@ -22,6 +22,7 @@
 
   magick2cpc = pkgs.callPackage ./pkgs/magick2cpc {};
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso {};
+  mymcplus = pkgs.python3Packages.callPackage ./pkgs/mymcplus {};
   navit = pkgs.libsForQt5.callPackage ./pkgs/navit {};
   pfsshell = pkgs.callPackage ./pkgs/pfsshell {}; #79142
 
