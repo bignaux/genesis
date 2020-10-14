@@ -17,6 +17,9 @@ stdenv.mkDerivation rec {
     sha256 = "1kfm5vi96ivcqmhdqyz7wrv6cj438shqc5crl1lawxwlay1qkahn";
   };
 
+  # was useless before someone broke SDL_image, see https://github.com/NixOS/nixpkgs/pull/97919/
+  NIX_LDFLAGS = "-lpng -ljpeg";
+
   nativeBuildInputs = [ makeWrapper pkgconfig ];
 
   buildInputs = [ file zlib ]
