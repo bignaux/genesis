@@ -61,13 +61,13 @@ stdenv.mkDerivation rec {
       makeWrapper $out/bin/ac_server $out/bin/${pname}-server \
         --run "cd $out/$gamedatadir" --add-flags "-Cconfig/servercmdline.txt"
     fi
-    '';
+  '';
 
   meta = {
     description = "Fast and fun first-person-shooter based on the Cube fps";
     homepage = "https://assault.cubers.net";
     maintainers = [ maintainers.genesis ];
     platforms = platforms.linux; # should work on darwin with a little effort.
-    license = stdenv.lib.licenses.zlib;
+    license = stdenv.lib.licenses.free;
   };
 }
