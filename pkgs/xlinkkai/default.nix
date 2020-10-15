@@ -27,7 +27,7 @@ in stdenv.mkDerivation rec{
   #dontStrip = true;
 
   meta = with stdenv.lib; {
-    broken = true;
+    #broken = true;
     description = "tunneling program that allows the play LAN games online";
     homepage = https://www.teamxlink.co.uk;
     license = licenses.unfree;
