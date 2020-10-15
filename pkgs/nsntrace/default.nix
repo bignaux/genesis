@@ -21,8 +21,10 @@ stdenv.mkDerivation rec {
     makeFlagsArray=(SUBDIRS=$PWD/src);
   '';
 
+#i donno if it could work with recent setup.
+# i recommand firejail with --net option instead.
   meta = with stdenv.lib; {
-    broken = true; #not tested
+    #broken = true; #not tested
     inherit (src.meta) homepage;
     description = "Perform network trace of a single process by using network namespaces";
     platforms = platforms.unix;
