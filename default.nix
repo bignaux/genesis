@@ -52,6 +52,6 @@ rec {
 
   # qt.qpa.plugin issue, test later.
   #scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator {};
-
+  soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt {};
   xlink-kai = pkgs.callPackage ./pkgs/xlink-kai {};
 }
