@@ -1,4 +1,4 @@
-{ pkgs, stdenv, fetchurl, patchelf }:
+{ pkgs, stdenv, fetchurl, autoPatchelfHook, writeScript }:
 
 let
   nur = import (builtins.fetchTarball
@@ -8,7 +8,7 @@ let
 
   version = "7.4.38";
 
-in stdenv.mkDerivation rec{
+in stdenv.mkDerivation rec {
   pname = "xlink-kai";
   packages = with pkgs; [ nur.repos.mic92.frida-tools ];
   inherit version;
@@ -19,36 +19,41 @@ in stdenv.mkDerivation rec{
   };
 
   # avoid dynamic fetching by kaiEngine
-  # TODO : copy that to be available in a wrapper
-  /* webui = fetchurl {
+  webui = fetchurl {
     name = "webui.zip";
     url = "https://client.teamxlink.co.uk/binary/webui_0.9978-38.zip";
     sha256 = "625662901391a70213680c5e59baffc495f8d95596cb620ac5e9eb42a833dd51";
-  }; */
+  };
 
-  nativeBuildInputs = [ patchelf ];
+  nativeBuildInputs = [ autoPatchelfHook stdenv.cc.cc ];
   buildInputs = [ nur.repos.mic92.frida-tools ];
 
-  phases = [ "unpackPhase" "installPhase" ];
+  dontStrip = true;
+  phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
 
-  installPhase = ''
-
-    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" kaiengine
-    patchelf --set-rpath "$p:${stdenv.lib.makeLibraryPath [ stdenv.cc.cc ]}" kaiengine
-  # To run without root/sudo grant cap_net_admin capability to the engine with:
-  # TODO : write wrapper with libcap
-  # setcap cap_net_admin=eip kaiengine
-    install -Dm755 kaiengine $out/bin/kaiengine
-    #install -Dm644 "${webui}" $out/data/webui.zip
-
-    # we need same libc as frida python
-    # patchelf --print-rpath <somepython> */
+  #TODO : fix nur.repos.mic92.frida-tools since segfault on frida-agent-64.so
+  kaiengineWrapper = writeScript "kaiengine" ''
+#!${stdenv.shell}
+mkdir -p $XDG_CONFIG_HOME/xlink-kai
+exec ${nur.repos.mic92.frida-tools}/bin/frida \
+  -l @out@/lib/agent.js --no-pause -- \
+  @out@/bin/.kaiengine-wrapped \
+  --appdata @out@/data/ \
+  --configfile $XDG_CONFIG_HOME/xlink-kai/kaiengine.conf
   '';
 
-  # we have to catch interruption and resume process.
-  # frida ./kaiengine -l interrupt.js --no-pause -q
+  installPhase = ''
+    # To run without root/sudo grant cap_net_admin capability to the engine with:
+    # TODO : write wrapper with libcap
+    # setcap cap_net_admin=eip kaiengine
+    install -Dm755 kaiengine $out/bin/.kaiengine-wrapped
+    install -Dm755 ${kaiengineWrapper} $out/bin/kaiengine
+    install -Dm644 "${webui}" $out/data/webui.zip
+    install -Dm755 ${./agent.js} $out/lib/agent.js
+    substituteInPlace $out/bin/kaiengine --replace @out@ $out
+  '';
 
-  meta = with stdenv.lib; {
+meta = with stdenv.lib; {
     broken = true;
     description = "tunneling program that allows the play LAN games online";
     homepage = https://www.teamxlink.co.uk;
