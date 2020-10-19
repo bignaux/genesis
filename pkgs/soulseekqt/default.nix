@@ -16,14 +16,14 @@ mkDerivation rec {
       sha256 = "16ncnvv8h33f161mgy7qc0wjvvqahsbwvby65qhgfh9pbbgb4xgg";
   };
 
-  appextracted = appimageTools.extractType2 {
+  appextracted = appimageTools.extract {
     inherit name;
     src="${src}/SoulseekQt-2018-1-30-64bit.AppImage";
   };
 
   dontBuild = true;
   dontConfigure = true;
-  
+
   nativeBuildInputs = [ imagemagick autoPatchelfHook desktop-file-utils ];
   buildInputs = [ qtmultimedia stdenv.cc.cc ];
 

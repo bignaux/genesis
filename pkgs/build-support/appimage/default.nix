@@ -1,7 +1,7 @@
-{ pkgs, stdenv, buildFHSUserEnv, writeScript, pkgs
+{ stdenv, buildFHSUserEnv, writeScript, pkgs
 , bash, radare2, jq, squashfsTools, ripgrep
 , coreutils, libarchive, file, runtimeShell, pv
-, lib, runCommand }:
+, lib, runCommand, substituteAll, shellcheck }:
 
 rec {
   appimage-exec = substituteAll {
