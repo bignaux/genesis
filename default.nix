@@ -23,6 +23,8 @@ rec {
   caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
   freediag = pkgs.callPackage ./pkgs/freediag {};
+  #frida = pkgs.callPackage ./pkgs/frida {};
+  frida-tools = pkgs.callPackage ./pkgs/frida-tools { myPython3Packages = python3Packages; };
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n {};
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {};
   hospital-hero = pkgs.callPackage ./pkgs/hospital-hero {};
@@ -35,11 +37,7 @@ rec {
   nsntrace = pkgs.callPackage ./pkgs/nsntrace {};
   ntpbclient = pkgs.callPackage ./pkgs/ntpbclient {};
   pfsshell = pkgs.callPackage ./pkgs/pfsshell {};
-
-  pysolfc = pkgs.callPackage ./pkgs/pysolfc
-  {
-      myPython3Packages = python3Packages;
-  };
+  pysolfc = pkgs.callPackage ./pkgs/pysolfc { myPython3Packages = python3Packages; };
 
   python3Packages = pkgs.recurseIntoAttrs (
     pkgs.python3Packages.callPackage ./pkgs/development/python-modules {}
@@ -53,5 +51,5 @@ rec {
   # qt.qpa.plugin issue, test later.
   #scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator {};
   soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt {};
-  xlink-kai = pkgs.callPackage ./pkgs/xlink-kai {};
+  xlink-kai = pkgs.callPackage ./pkgs/xlink-kai { inherit frida-tools; };
 }
