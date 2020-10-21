@@ -13,9 +13,6 @@ buildPythonApplication rec {
     sha256 = "e336e29ec6d82bf8d3994dfe4000ad88c0f10f00221dc85b8fea7724aa93b1b0";
   };
 
-  # attaching does not work in build sandbox
-  doCheck = false;
-
   propagatedBuildInputs = [
     pygments
     prompt_toolkit
