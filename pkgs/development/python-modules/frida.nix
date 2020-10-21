@@ -23,7 +23,7 @@ buildPythonPackage rec {
 
   # "~/frida-{}-py{}.{}-{}.egg".format(frida_version, python_version[0], python_version[1], os_version))
   egg =  fetchurl {
-    url = "https://files.pythonhosted.org/packages/33/0d/d45e34f8f4333b30bf1f9fcc95b23fd16a03c90477b8018fbb9f9e9a3272/frida-12.11.18-py3.8-linux-x86_64.egg";
+    url = "https://files.pythonhosted.org/packages/33/0d/d45e34f8f4333b30bf1f9fcc95b23fd16a03c90477b8018fbb9f9e9a3272/${pname}-${version}-py3.8-linux-x86_64.egg";
     sha256 = "583ac3d9e0831a03435756dcb67bee092f6ec92ad5756d40dbc0683755d6590f";
   };
 
