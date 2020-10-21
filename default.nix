@@ -23,7 +23,6 @@ rec {
   caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
   freediag = pkgs.callPackage ./pkgs/freediag {};
-  #frida = pkgs.callPackage ./pkgs/frida {};
   frida-tools = pkgs.callPackage ./pkgs/frida-tools { myPython3Packages = python3Packages; };
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n {};
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {};
