@@ -27,8 +27,8 @@ in stdenv.mkDerivation rec {
   phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
 
   fridaOptions = "--runtime=v8 "; #--no-pause
-  #TODO turn this to a list
-  fridaScripts = "$out/lib/agent.js ";
+  #TODO frida accept only one script
+  fridaScript = "$out/lib/agent.js ";
 
   installPhase = ''
     # To run without root/sudo grant cap_net_admin capability to the engine with:
@@ -36,11 +36,10 @@ in stdenv.mkDerivation rec {
     # setcap cap_net_admin=eip kaiengine
     install -Dm755 kaiengine $out/bin/kaiengine
     install -Dm755 ${./agent.js} $out/lib/agent.js
-    install -Dm755 ${./socket.js} $out/lib/socket.js
     install -Dm644 "${webui}" $out/data/webui.zip
 
     makeWrapper ${frida-tools}/bin/frida $out/bin/${pname} \
-     --add-flags "-l ${fridaScripts} $fridaOptions -f \
+     --add-flags "-l ${fridaScript} $fridaOptions -f \
        $out/bin/kaiengine -- --appdata $out/data/ \
        --configfile \$XDG_CONFIG_HOME/xlink-kai/kaiengine.conf" \
      --run "mkdir -p \$XDG_CONFIG_HOME/xlink-kai"
