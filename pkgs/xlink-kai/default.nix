@@ -1,7 +1,7 @@
 { stdenv, pkgs, fetchurl, autoPatchelfHook, makeWrapper, frida-tools }:
 
 let
-
+  libPath = stdenv.lib.makeLibraryPath [ stdenv.cc.cc ];
   version = "7.4.38";
 
 in stdenv.mkDerivation rec {
@@ -24,6 +24,7 @@ in stdenv.mkDerivation rec {
   buildInputs = [ frida-tools ];
 
   dontStrip = true;
+  #
   phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
 
   fridaOptions = "--runtime=v8 --no-pause";
@@ -44,11 +45,15 @@ in stdenv.mkDerivation rec {
     # nix-shell -p nodejs --run "npm run watch"
     install -Dm644 ${./agent.js} $out/lib/_agent.js
 
+    # this trick doesn't work there (-why?)
+    # --suffix-each LD_LIBRARY_PATH : ${libPath} \
+
     makeWrapper ${frida-tools}/bin/frida $out/bin/${pname} \
      --add-flags "-l \$SCRIPT_DIR/${fridaScript} $fridaOptions -f \
        $out/bin/kaiengine -- --appdata $out/data/ \
        --configfile \$XDG_CONFIG_HOME/xlink-kai/kaiengine.conf" \
      --run "mkdir -p \$XDG_CONFIG_HOME/xlink-kai" \
+     --run "ldd $out/bin/kaiengine" \
      --run "if [ -f _agent.js ]; then export SCRIPT_DIR=\$(pwd) ;else export SCRIPT_DIR=$out/lib/;fi"
   '';
 
