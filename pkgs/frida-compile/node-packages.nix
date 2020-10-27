@@ -2156,11 +2156,17 @@ let
       };
     };
   };
-  args = {
+in
+{
+  "frida-compile-git+https://github.com/frida/frida-compile.git#v10.0.0" = nodeEnv.buildNodePackage {
     name = "frida-compile";
     packageName = "frida-compile";
     version = "10.0.0";
-    src = ./.;
+    src = fetchgit {
+      url = "https://github.com/frida/frida-compile.git";
+      rev = "7840b6c8bb46425550471e1c347238ce3a1b3183";
+      sha256 = "d76a04f59d34586bf5f847bc28017a48e7e519d1aa4f42db08ad27ebf40195a8";
+    };
     dependencies = [
       sources."@frida/uglifyify-7.0.1"
       sources."JSONStream-1.3.5"
@@ -2540,11 +2546,4 @@ let
     bypassCache = true;
     reconstructLock = true;
   };
-in
-{
-  args = args;
-  sources = sources;
-  tarball = nodeEnv.buildNodeSourceDist args;
-  package = nodeEnv.buildNodePackage args;
-  shell = nodeEnv.buildNodeShell args;
 }

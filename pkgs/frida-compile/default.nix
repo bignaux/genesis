@@ -11,12 +11,12 @@ in
 nodePackages."${packageName}".override {
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
-  postInstall = ''
+  /* postInstall = ''
     # Patch shebangs in node_modules, otherwise the webpack build fails with interpreter problems
     patchShebangs --build "$out/lib/node_modules/spacegun/node_modules/"
     # compile Typescript sources
     npm run build
-  '';
+  ''; */
 
   meta = with lib; {
     description = "Compile a Frida script comprised of one or more Node.js modules";
