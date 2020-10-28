@@ -1,4 +1,6 @@
-{ stdenv, pkgs, fetchurl, autoPatchelfHook, makeWrapper, frida-tools, frida-compile }:
+{ stdenv, pkgs, fetchurl, autoPatchelfHook, makeWrapper
+  , frida-tools
+  , frida-agent-example }:
 
 let
   libPath = stdenv.lib.makeLibraryPath [ stdenv.cc.cc ];
@@ -9,8 +11,8 @@ in stdenv.mkDerivation rec {
   inherit version;
 
   src = fetchurl {
-    url = "https://github.com/Team-XLink/releases/releases/download/v7.4.38/kaiEngine-7.4.38-539579851.headless.ubuntu.x86_64.tar.gz";
-    sha256 = "0k2b7g3vm81dpr08kjsv7g85l4brljywv1gy7dm41v0z87vzi52r";
+    url = "https://cdn.teamxlink.co.uk/binary/kaiEngine-7.4.39-539601671.headless.debian.x86_64.tar.gz";
+    sha256 = "0z0ma6hxbjvfvyibxk988zw2622k2ia637xw0v5hfvh838sjijsl";
   };
 
   # avoid dynamic fetching by kaiEngine
@@ -21,18 +23,18 @@ in stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoPatchelfHook stdenv.cc.cc makeWrapper ];
-  buildInputs = [ frida-tools frida-compile ];
+  buildInputs = [ frida-tools frida-agent-example ];
 
   dontStrip = true;
   #
   phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
 
-  fridaOptions = "--runtime=v8 --no-pause";
+  fridaOptions = "--no-pause"; #--runtime=v8 
   #TODO frida accept only one script
   fridaScript = "_agent.js";
 
   installPhase = ''
-    set -x
+    #set -x
     # To run without root/sudo grant cap_net_admin capability to the engine with:
     # TODO : write wrapper with libcap
     # setcap cap_net_admin=eip kaiengine
@@ -42,11 +44,8 @@ in stdenv.mkDerivation rec {
     # could be compiled using frida-compile
     # see https://github.com/oleavr/frida-agent-example
 
-    #frida-compile ${./index.ts} -o _agent.js -c
-    # nix-shell -p nodejs --run "npm install"
-    # nix-shell -p nodejs --run "npm run watch"
-    i#nstall -Dm644 _agent.js $out/lib/_agent.js
-    install -Dm644 ${./agent.js} $out/lib/_agent.js
+    # poor packaging of frida-agent-example , use full path
+    frida-compile ${./index.ts} -o $out/lib/_agent.js -c
 
     # this trick doesn't work there (-why?)
     # --suffix-each LD_LIBRARY_PATH : ${libPath} \

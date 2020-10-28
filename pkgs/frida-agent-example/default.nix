@@ -11,24 +11,15 @@ in
 nodePackages."${packageName}".override {
   nativeBuildInputs = [ pkgs.makeWrapper ];
 
-  /* # Patch shebangs in node_modules, otherwise the webpack build fails with interpreter problems
-  patchShebangs --build "$out/lib/node_modules/frida-compile/node_modules/"
-
-
-     */
   postInstall = ''
-  # compile Typescript sources
-  #cp ${./tsconfig.json} $out/lib/node_modules/frida-compile
-  #npm run build
-
-  makeWrapper '${nodejs}/bin/node' '$out/bin/frida-compile' \
-    --add-flags "$out/lib/node_modules/frida-compile/bin/compile.js" \
-    --run "cd $out/lib/node_modules/frida-compile/"
+    makeWrapper '${nodejs}/bin/node' "$out/bin/frida-compile" \
+      --add-flags "$out/lib/node_modules/frida-agent-example/node_modules/.bin/frida-compile" \
+      --run "cd $out/lib/node_modules/frida-agent-example"
   '';
 
   meta = with lib; {
-    description = "Compile a Frida script comprised of one or more Node.js modules";
-    homepage = https://github.com/frida/frida-compile;
+    description = "Example Frida agent written in TypeScript";
+    homepage = https://github.com/oleavr/frida-agent-example/;
     maintainers = with maintainers; [ genesis ];
     license = licenses.wxWindows; # "LGPL-2.0 WITH WxWindows-exception-3.1"
     platforms = platforms.linux;
