@@ -4,7 +4,7 @@
 
 let
   libPath = stdenv.lib.makeLibraryPath [ stdenv.cc.cc ];
-  version = "7.4.38";
+  version = "7.4.39";
 
 in stdenv.mkDerivation rec {
   pname = "xlink-kai";
@@ -29,7 +29,7 @@ in stdenv.mkDerivation rec {
   #
   phases = [ "unpackPhase" "installPhase" "fixupPhase" ];
 
-  fridaOptions = "--no-pause"; #--runtime=v8 
+  fridaOptions = "--no-pause"; #--runtime=v8
   #TODO frida accept only one script
   fridaScript = "_agent.js";
 
@@ -40,9 +40,6 @@ in stdenv.mkDerivation rec {
     # setcap cap_net_admin=eip kaiengine
     install -Dm755 kaiengine $out/bin/kaiengine
     install -Dm644 "${webui}" $out/data/webui.zip
-
-    # could be compiled using frida-compile
-    # see https://github.com/oleavr/frida-agent-example
 
     # poor packaging of frida-agent-example , use full path
     frida-compile ${./index.ts} -o $out/lib/_agent.js -c
@@ -56,7 +53,7 @@ in stdenv.mkDerivation rec {
        --configfile \$XDG_CONFIG_HOME/xlink-kai/kaiengine.conf" \
      --run "mkdir -p \$XDG_CONFIG_HOME/xlink-kai" \
      --run "ldd $out/bin/kaiengine" \
-     --run "if [ -f _agent.js ]; then export SCRIPT_DIR=\$(pwd) ;else export SCRIPT_DIR=$out/lib/;fi"
+     --run "if [ -f _agent.js ]; then export SCRIPT_DIR=\$(pwd); else export SCRIPT_DIR=$out/lib/;fi"
   '';
 
 meta = with stdenv.lib; {
