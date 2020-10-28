@@ -24,7 +24,7 @@ rec {
   clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
   freediag = pkgs.callPackage ./pkgs/freediag {};
   frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example {};
-  frida-compile = pkgs.callPackage ./pkgs/frida-compile {};
+  #frida-compile = pkgs.callPackage ./pkgs/frida-compile {};
   frida-tools = pkgs.callPackage ./pkgs/frida-tools { myPython3Packages = python3Packages; };
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n {};
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump {};
