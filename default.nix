@@ -7,7 +7,10 @@
 #     nix-build -A mypackage
 
 { pkgs ? import <nixpkgs> {} }:
-
+let
+  maintainers = pkgs.lib.maintainers // import ./maintainers.nix;
+  mylib = pkgs.lib // { maintainers = maintainers; };
+in
 # rec is pretty convinient...
 rec {
   # The `lib`, `modules`, and `overlay` names are special
