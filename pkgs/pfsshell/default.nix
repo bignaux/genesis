@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
   pname = "pfsshell";
 
   src = fetchFromGitHub {
-    owner = "uyjulian";
+    owner = "ps2homebrew";
     repo = "pfsshell";
     rev = "v${version}";
     sha256 = "0cr91al3knsbfim75rzl7rxdsglcc144x0nizn7q4jx5cad3zbn8";

@@ -5,10 +5,10 @@ stdenv.mkDerivation rec {
   pname = "hdl_dump";
 
   src = fetchFromGitHub {
-    owner = "AKuHAK";
+    owner = "ps2homebrew";
     repo = "hdl-dump";
-    rev = "be37e112a44772a1341c867dc3dfee7381ce9e59";
-    sha256 = "0akxak6hm11h8z6jczxgr795s4a8czspwnhl3swqxp803dvjdx41";
+    rev = "976033b8da3f55be612d085d38ef4d21117136ee";
+    sha256 = "0f8ifahvlzq7ds57c7m84vzpaj9ik8j53i2xkx4nqkg86kpm7nsi";
   };
 
   installPhase = ''
