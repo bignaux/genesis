@@ -1,8 +1,8 @@
-{ fetchFromGitHub, stdenv, makeDesktopItem, openal, pkgconfig, libogg,
+{ lib, fetchFromGitHub, stdenv, makeDesktopItem, openal, pkgconfig, libogg,
   libvorbis, SDL, SDL_image, makeWrapper, zlib, file, libpng, libjpeg_turbo,
   client ? true, server ? true }:
 
-with stdenv.lib;
+with lib;
 
 stdenv.mkDerivation rec {
 
