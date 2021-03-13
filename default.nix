@@ -9,7 +9,7 @@
 { pkgs ? import <nixpkgs> {} }:
 let
   maintainers = pkgs.lib.maintainers // import ./maintainers.nix;
-  lib = pkgs.lib // { maintainers = maintainers; };
+  mylib = pkgs.lib // { maintainers = maintainers; };
 in
 # rec is pretty convinient...
 rec {
