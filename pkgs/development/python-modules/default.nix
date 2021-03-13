@@ -1,8 +1,8 @@
-{ callPackage }:
+{ lib, callPackage }:
 
 rec {
 
-  pycotap = callPackage ./pycotap { lib = mylib; };
-  pysol_cards = callPackage ./pysol_cards { lib = mylib; };
-  frida = callPackage ./frida.nix { lib = mylib; };
+  pycotap = callPackage ./pycotap {};
+  pysol_cards = callPackage ./pysol_cards {};
+  frida = callPackage ./frida.nix {};
 }
