@@ -23,7 +23,7 @@ rec {
 
   assaultcube = pkgs.callPackage ./pkgs/assaultcube {};
   #beremiz = pkgs.callPackage ./pkgs/beremiz {};
-  caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
+  #caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
   freediag = pkgs.callPackage ./pkgs/freediag {};
   frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example {};
