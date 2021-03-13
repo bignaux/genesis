@@ -4,13 +4,14 @@
 stdenv.mkDerivation rec {
 
   pname = "caprice32";
-  version = "4.6.0";
+  version = "latest";
 
   src = fetchFromGitHub {
     repo = "caprice32";
-    rev = "v${version}";
+    #rev = "v${version}";
+    rev = "584d4ab6f4ce178b0a83a6a2d95119213c86fda6";
     owner = "ColinPitrat";
-    sha256 = "0hng5krwgc1h9bz1xlkp2hwnvas965nd7sb3z9mb2m6x9ghxlacz";
+    sha256 = "sha256-5Lpudnws3DcsRXCSAjJNxOwMDwHD6X58ruGiFZqdb5M=";
   };
 
   nativeBuildInputs = [ desktop-file-utils pkgconfig ];
