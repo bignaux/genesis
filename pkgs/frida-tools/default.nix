@@ -1,4 +1,4 @@
-{ stdenv, python3, myPython3Packages, fetchFromGitHub }:
+{ lib, python3, myPython3Packages, fetchFromGitHub }:
 
 with python3.pkgs;
 
@@ -20,7 +20,7 @@ buildPythonApplication rec {
     myPython3Packages.frida
   ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers";
     homepage = "https://www.frida.re/";
     license = licenses.wxWindows;

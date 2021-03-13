@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
   version = "unstable-2020-29-12";
@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     install -Dm755 hdl_dump -t $out/bin
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     inherit (src.meta) homepage;
     description = "PlayStation 2 HDLoader image dump/install utility";
     platforms = platforms.linux;

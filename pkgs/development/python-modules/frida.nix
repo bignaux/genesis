@@ -1,4 +1,4 @@
-{ stdenv
+{ lib
 , buildPythonPackage
 , fetchPypi
 , fetchurl
@@ -48,7 +48,7 @@ buildPythonPackage rec {
    ln -s ${egg} ./${egg.name}
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers";
     homepage = "https://www.frida.re";
     license = licenses.wxWindows;

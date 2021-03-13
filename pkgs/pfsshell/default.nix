@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, meson, ninja }:
+{ lib, stdenv, fetchFromGitHub, meson, ninja }:
 
 stdenv.mkDerivation rec {
   version = "1.1.1";
@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ meson ninja ];
   hardeningDisable = [ "format" "fortify" ];
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     inherit (src.meta) homepage;
     description = "PFS (PlayStation File System) shell for POSIX-based systems";
     platforms = platforms.unix;
