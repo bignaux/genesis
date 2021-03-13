@@ -53,7 +53,7 @@ buildPythonPackage rec {
     description = "Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers";
     homepage = "https://www.frida.re";
     license = licenses.wxWindows;
-    maintainers = with maintainers; [ genesis ];
+    #maintainers = with maintainers; [ genesis ];
     platforms = [ "x86_64-linux" ];
   };
 }

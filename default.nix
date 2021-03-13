@@ -47,7 +47,7 @@ rec {
   pysolfc = pkgs.callPackage ./pkgs/pysolfc {  lib = mylib; myPython3Packages = python3Packages; };
 
   python3Packages = pkgs.recurseIntoAttrs (
-    pkgs.python3Packages.callPackage ./pkgs/development/python-modules { lib = mylib;}
+    pkgs.python3Packages.callPackage ./pkgs/development/python-modules {}
   );
 
   # from the makefile
