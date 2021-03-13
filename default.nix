@@ -21,7 +21,7 @@ rec {
   #appimage-run = pkgs.callPackage ./pkgs/tools/package-management/appimage-run {}; #82266 #89122
   #appimageTools = pkgs.callPackage ./pkgs/build-support/appimage {}; #82266
 
-  assaultcube = pkgs.callPackage ./pkgs/assaultcube {};
+  assaultcube = pkgs.callPackage ./pkgs/assaultcube { lib = mylib; };
   #beremiz = pkgs.callPackage ./pkgs/beremiz {};
   #caprice32 = pkgs.callPackage ./pkgs/caprice32 {};
   clocktimer = pkgs.callPackage ./pkgs/clocktimer {};
