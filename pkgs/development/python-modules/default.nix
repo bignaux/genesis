@@ -1,4 +1,4 @@
-{ lib, callPackage }:
+{ callPackage }:
 
 rec {
   frida = callPackage ./frida.nix {};

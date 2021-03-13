@@ -13,7 +13,7 @@ buildPythonPackage rec {
     homepage = https://el-tramo.be/pycotap;
     description = "A tiny test runner that outputs TAP results to standard output";
     license = licenses.mit;
-    maintainers = with maintainers; [ genesis ];
+    #maintainers = with maintainers; [ genesis ];
   };
 
 }
