@@ -54,9 +54,7 @@ rec {
   # -m32 because QuickBMS has been tested only on 32bit systems and gives problems using 64bit native code
   quickbms = pkgs.pkgsi686Linux.callPackage ./pkgs/quickbms { lib = mylib; };
   rasm = pkgs.callPackage ./pkgs/rasm { lib = mylib; };
-
-  # qt.qpa.plugin issue, test later.
-  #scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator {};
+  scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator { lib = mylib; };
   soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt { lib = mylib; };
   xlink-kai = pkgs.callPackage ./pkgs/xlink-kai { lib = mylib; inherit frida-agent-example frida-tools; };
 }
