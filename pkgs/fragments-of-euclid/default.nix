@@ -18,7 +18,6 @@
 }:
 
 # unity3d
-# I don't have a sufficient GPU to achieve it.
 
 let
 
@@ -55,7 +54,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    broken = true;
+    broken = true; # I don't have a sufficient GPU to achieve it.
     description = "exploring and solving puzzle in a mind-bending environment inspired by M.C. Escher";
     homepage = "https://nusan.itch.io/fragments-of-euclid";
     downloadPage = meta.homepage;
