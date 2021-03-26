@@ -45,6 +45,7 @@ rec {
   nsntrace = pkgs.callPackage ./pkgs/nsntrace { lib = mylib; };
   ntpbclient = pkgs.callPackage ./pkgs/ntpbclient { lib = mylib; };
   pfsshell = pkgs.callPackage ./pkgs/pfsshell { lib = mylib; };
+  ps2client = pkgs.callPackage ./pkgs/ps2client { lib = mylib; };
   pysolfc = pkgs.callPackage ./pkgs/pysolfc { lib = mylib; myPython3Packages = python3Packages; };
 
   python3Packages = pkgs.recurseIntoAttrs (
