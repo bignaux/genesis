@@ -31,6 +31,8 @@ rec {
   frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example { lib = mylib; };
   #frida-compile = pkgs.callPackage ./pkgs/frida-compile {};
   frida-tools = pkgs.callPackage ./pkgs/frida-tools { lib = mylib; myPython3Packages = python3Packages; };
+  gbdk-2020 = pkgs.callPackage ./pkgs/gbdk-2020 { lib = mylib; inherit gbdk-2020-sdcc; };
+  gbdk-2020-sdcc = pkgs.callPackage ./pkgs/gbdk-2020-sdcc { lib = mylib; };
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n { lib = mylib; };
   hdl-dump = pkgs.callPackage ./pkgs/hdl_dump { lib = mylib; };
 
@@ -42,12 +44,10 @@ rec {
   matiec = pkgs.callPackage ./pkgs/matiec { lib = mylib; };
   microwindows = pkgs.callPackage ./pkgs/microwindows { lib = mylib; };
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso { lib = mylib; };
-  mymcplus = pkgs.python3Packages.callPackage ./pkgs/mymcplus { lib = mylib; };
   navit = pkgs.libsForQt5.callPackage ./pkgs/navit { lib = mylib; };
   #navittom = pkgs.callPackage ./pkgs/navittom {};
   nsntrace = pkgs.callPackage ./pkgs/nsntrace { lib = mylib; };
   ntpbclient = pkgs.callPackage ./pkgs/ntpbclient { lib = mylib; };
-  pfsshell = pkgs.callPackage ./pkgs/pfsshell { lib = mylib; };
   ps2client = pkgs.callPackage ./pkgs/ps2client { lib = mylib; };
   ps2iconsys = pkgs.callPackage ./pkgs/ps2iconsys { lib = mylib; };
   pysolfc = pkgs.callPackage ./pkgs/pysolfc { lib = mylib; myPython3Packages = python3Packages; };
