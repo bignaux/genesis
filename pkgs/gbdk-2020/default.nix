@@ -18,7 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" ];
 
-  # enableParallelBuilding = true;
+  enableParallelBuilding = true;
 
   nativeBuildInputs = [
     autoconf

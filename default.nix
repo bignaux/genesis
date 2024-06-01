@@ -62,5 +62,5 @@ rec {
   rasm = pkgs.callPackage ./pkgs/rasm { lib = mylib; };
   scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator { lib = mylib; };
   soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt { lib = mylib; };
-  xlink-kai = pkgs.callPackage ./pkgs/xlink-kai { lib = mylib; inherit frida-agent-example frida-tools; };
+  # xlink-kai = pkgs.callPackage ./pkgs/xlink-kai { lib = mylib; inherit frida-agent-example frida-tools; };
 }
