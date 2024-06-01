@@ -44,7 +44,8 @@ rec {
   matiec = pkgs.callPackage ./pkgs/matiec { lib = mylib; };
   microwindows = pkgs.callPackage ./pkgs/microwindows { lib = mylib; };
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso { lib = mylib; };
-  navit = pkgs.libsForQt5.callPackage ./pkgs/navit { lib = mylib; };
+  # unsecure freeimage
+  # navit = pkgs.libsForQt5.callPackage ./pkgs/navit { lib = mylib; };
   # navittom = pkgs.callPackage ./pkgs/navittom {};
   nsntrace = pkgs.callPackage ./pkgs/nsntrace { lib = mylib; };
   ntpbclient = pkgs.callPackage ./pkgs/ntpbclient { lib = mylib; };
