@@ -45,22 +45,17 @@ rec {
   microwindows = pkgs.callPackage ./pkgs/microwindows { lib = mylib; };
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso { lib = mylib; };
   navit = pkgs.libsForQt5.callPackage ./pkgs/navit { lib = mylib; };
-  #navittom = pkgs.callPackage ./pkgs/navittom {};
+  # navittom = pkgs.callPackage ./pkgs/navittom {};
   nsntrace = pkgs.callPackage ./pkgs/nsntrace { lib = mylib; };
   ntpbclient = pkgs.callPackage ./pkgs/ntpbclient { lib = mylib; };
   ps2client = pkgs.callPackage ./pkgs/ps2client { lib = mylib; };
   ps2iconsys = pkgs.callPackage ./pkgs/ps2iconsys { lib = mylib; };
-  pysolfc = pkgs.callPackage ./pkgs/pysolfc { lib = mylib; myPython3Packages = python3Packages; };
 
   python3Packages = pkgs.recurseIntoAttrs (
     pkgs.python3Packages.callPackage ./pkgs/development/python-modules { }
   );
 
-  # from the makefile
-  # -m32 because QuickBMS has been tested only on 32bit systems and gives problems using 64bit native code
-  quickbms = pkgs.pkgsi686Linux.callPackage ./pkgs/quickbms { lib = mylib; };
-  rasm = pkgs.callPackage ./pkgs/rasm { lib = mylib; };
   scriptcommunicator = pkgs.libsForQt5.callPackage ./pkgs/scriptcommunicator { lib = mylib; };
-  soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt { lib = mylib; };
+  # soulseekqt = pkgs.libsForQt5.callPackage ./pkgs/soulseekqt { lib = mylib; };
   # xlink-kai = pkgs.callPackage ./pkgs/xlink-kai { lib = mylib; inherit frida-agent-example frida-tools; };
 }
