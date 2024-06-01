@@ -38,7 +38,9 @@ rec {
   # find a lot of games on https://itch.io/games/free/platform-linux
   hospital-hero = pkgs.callPackage ./pkgs/hospital-hero { lib = mylib; };
   kelftool = pkgs.callPackage ./pkgs/kelftool { lib = mylib; };
-  magick2cpc = pkgs.callPackage ./pkgs/magick2cpc { lib = mylib; };
+
+  # need to port to imagemagick7 or GraphicsMagick
+  # magick2cpc = pkgs.callPackage ./pkgs/magick2cpc { lib = mylib; };
   matiec = pkgs.callPackage ./pkgs/matiec { lib = mylib; };
   microwindows = pkgs.callPackage ./pkgs/microwindows { lib = mylib; };
   mkpsxiso = pkgs.callPackage ./pkgs/mkpsxiso { lib = mylib; };
