@@ -26,6 +26,7 @@ rec {
   caprice32 = pkgs.callPackage ./pkgs/caprice32 { lib = mylib; };
   colorize = pkgs.callPackage ./pkgs/colorize { lib = mylib; };
   clocktimer = pkgs.callPackage ./pkgs/clocktimer { lib = mylib; };
+  emulicious = pkgs.callPackage ./pkgs/emulicious {lib = mylib; };
   fragments-of-euclid = pkgs.callPackage ./pkgs/fragments-of-euclid { lib = mylib; };
   freediag = pkgs.callPackage ./pkgs/freediag { lib = mylib; };
   frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example { lib = mylib; };
