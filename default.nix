@@ -26,12 +26,11 @@ rec {
   caprice32 = pkgs.callPackage ./pkgs/caprice32 { lib = mylib; };
   colorize = pkgs.callPackage ./pkgs/colorize { lib = mylib; };
   clocktimer = pkgs.callPackage ./pkgs/clocktimer { lib = mylib; };
-  emulicious = pkgs.callPackage ./pkgs/emulicious {lib = mylib; };
+  emulicious = pkgs.callPackage ./pkgs/emulicious { lib = mylib; };
   fragments-of-euclid = pkgs.callPackage ./pkgs/fragments-of-euclid { lib = mylib; };
   freediag = pkgs.callPackage ./pkgs/freediag { lib = mylib; };
-  frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example { lib = mylib; };
-  #frida-compile = pkgs.callPackage ./pkgs/frida-compile {};
-  frida-tools = pkgs.callPackage ./pkgs/frida-tools { lib = mylib; myPython3Packages = python3Packages; };
+  # frida-agent-example = pkgs.callPackage ./pkgs/frida-agent-example { lib = mylib; };
+  # frida-compile = pkgs.callPackage ./pkgs/frida-compile {};
   gbdk-2020 = pkgs.callPackage ./pkgs/gbdk-2020 { lib = mylib; inherit gbdk-2020-sdcc; };
   gbdk-2020-sdcc = pkgs.callPackage ./pkgs/gbdk-2020-sdcc { lib = mylib; };
   gbdk-n = pkgs.callPackage ./pkgs/gbdk-n { lib = mylib; };
