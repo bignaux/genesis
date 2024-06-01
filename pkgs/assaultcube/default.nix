@@ -3,7 +3,7 @@
 , stdenv
 , makeDesktopItem
 , openal
-, pkgconfig
+, pkg-config
 , libogg
 , libvorbis
 , SDL
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
   # was useless before someone broke SDL_image, see https://github.com/NixOS/nixpkgs/pull/97919/
   NIX_LDFLAGS = "-lpng -ljpeg";
 
-  nativeBuildInputs = [ makeWrapper pkgconfig ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
   buildInputs = [ file zlib ]
     ++ optionals client [ openal SDL SDL_image libogg libvorbis libjpeg_turbo libpng ];

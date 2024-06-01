@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, pkgconfig, unzip, lzo, bzip2, zlib, openssl }:
+{ lib, stdenv, fetchurl, pkg-config, unzip, lzo, bzip2, zlib, openssl }:
 
 stdenv.mkDerivation rec {
   version = "0.10.1";
