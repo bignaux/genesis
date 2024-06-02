@@ -26,7 +26,6 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    broken = true;
     homepage = "https://emulicious.net/";
     description = "Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator";
     mainProgram = "emulicious";
